@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Document(collection = "logs-pedidos")
 public class LogsPedidos {
     @Id
-    private Long id;
+    private String id;
     private Long idPedido;
     private Long idCliente;
     private String correoCliente;

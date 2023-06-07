@@ -17,5 +17,6 @@ public class LogPedidoUseCase implements LogPedidoServicePort {
     public void generarLog(LogPedido logPedido) {
         logPedido.setFecha(LocalDate.now());
 
+        logPedidoPersistencePort.generarLog(logPedido);
     }
 }
