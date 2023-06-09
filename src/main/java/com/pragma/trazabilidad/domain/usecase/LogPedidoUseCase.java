@@ -4,7 +4,8 @@ import com.pragma.trazabilidad.domain.api.LogPedidoServicePort;
 import com.pragma.trazabilidad.domain.model.LogPedido;
 import com.pragma.trazabilidad.domain.spi.LogPedidoPersistencePort;
 
-import java.time.LocalDate;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 public class LogPedidoUseCase implements LogPedidoServicePort {
 
@@ -15,8 +16,15 @@ public class LogPedidoUseCase implements LogPedidoServicePort {
     }
     @Override
     public void generarLog(LogPedido logPedido) {
-        logPedido.setFecha(LocalDate.now());
+        logPedido.setFecha(LocalDateTime.now());
 
         logPedidoPersistencePort.generarLog(logPedido);
+    }
+    @Override
+    public Long tiempoPedido(Long idPedido) {
+        LocalDateTime fechaLogPedidoPendiente = logPedidoPersistencePort.obtenerLogPedidoPorEstado(idPedido,"En preparacion").getFecha();
+        LocalDateTime fechaLogPedidoEntregado = logPedidoPersistencePort.obtenerLogPedidoPorEstado(idPedido,"Entregado").getFecha();
+        Duration duration = Duration.between(fechaLogPedidoPendiente,fechaLogPedidoEntregado);
+        return duration.toMinutes();
     }
 }

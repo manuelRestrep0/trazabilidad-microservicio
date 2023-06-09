@@ -1,7 +1,7 @@
 package com.pragma.trazabilidad.configuration;
 
 import com.pragma.trazabilidad.adapters.driven.mongodb.adapter.LogsPedidosMongodbAdapter;
-import com.pragma.trazabilidad.adapters.driven.mongodb.mapper.LogPedidoDocumentMapper;
+import com.pragma.trazabilidad.adapters.driven.mongodb.mapper.LogPedidoEntityMapper;
 import com.pragma.trazabilidad.adapters.driven.mongodb.repository.LogsPedidosRepository;
 import com.pragma.trazabilidad.domain.api.LogPedidoServicePort;
 import com.pragma.trazabilidad.domain.spi.LogPedidoPersistencePort;
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @RequiredArgsConstructor
 public class BeanConfiguration {
     private final LogsPedidosRepository logsPedidosRepository;
-    private final LogPedidoDocumentMapper logPedidoDocumentMapper;
+    private final LogPedidoEntityMapper logPedidoEntityMapper;
 
     @Bean
     public LogPedidoServicePort logPedidoServicePort(){
@@ -23,6 +23,6 @@ public class BeanConfiguration {
 
     @Bean
     public LogPedidoPersistencePort logPedidoPersistencePort(){
-        return new LogsPedidosMongodbAdapter(logsPedidosRepository,logPedidoDocumentMapper);
+        return new LogsPedidosMongodbAdapter(logsPedidosRepository, logPedidoEntityMapper);
     }
 }

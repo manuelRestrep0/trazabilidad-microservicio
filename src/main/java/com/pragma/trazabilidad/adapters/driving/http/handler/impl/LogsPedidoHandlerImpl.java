@@ -16,4 +16,9 @@ public class LogsPedidoHandlerImpl implements LogsPedidoHandler {
     public void generarLog(LogPedidoDto pedidoDto) {
         logPedidoServicePort.generarLog(pedidoDtoMapper.toLogPedido(pedidoDto));
     }
+
+    @Override
+    public Long tiempoPedido(Long idPedido) {
+        return logPedidoServicePort.tiempoPedido(idPedido);
+    }
 }

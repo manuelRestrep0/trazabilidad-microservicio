@@ -1,12 +1,12 @@
 package com.pragma.trazabilidad.domain.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class LogPedido {
     private Long idPedido;
     private Long idCliente;
     private String correoCliente;
-    private LocalDate fecha;
+    private LocalDateTime fecha;
     private String estadoAnterior;
     private String estadoNuevo;
     private Long idEmpleado;
@@ -14,7 +14,7 @@ public class LogPedido {
 
     public LogPedido() {
     }
-    public LogPedido(Long idPedido, Long idCliente, String correoCliente, LocalDate fecha, String estadoAnterior, String estadoNuevo, Long idEmpleado, String correoEmpleado) {
+    public LogPedido(Long idPedido, Long idCliente, String correoCliente, LocalDateTime fecha, String estadoAnterior, String estadoNuevo, Long idEmpleado, String correoEmpleado) {
         this.idPedido = idPedido;
         this.idCliente = idCliente;
         this.correoCliente = correoCliente;
@@ -49,11 +49,11 @@ public class LogPedido {
         this.correoCliente = correoCliente;
     }
 
-    public LocalDate getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 

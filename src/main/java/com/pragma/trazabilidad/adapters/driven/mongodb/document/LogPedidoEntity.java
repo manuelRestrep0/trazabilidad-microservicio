@@ -5,18 +5,18 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @Document(collection = "logs-pedidos")
-public class LogsPedidos {
+public class LogPedidoEntity {
     @Id
     private String id;
     private Long idPedido;
     private Long idCliente;
     private String correoCliente;
-    private LocalDate fecha;
+    private LocalDateTime fecha;
     private String estadoAnterior;
     private String estadoNuevo;
     private Long idEmpleado;
