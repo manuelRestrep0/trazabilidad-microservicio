@@ -6,6 +6,7 @@ import com.pragma.trazabilidad.domain.spi.LogPedidoPersistencePort;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class LogPedidoUseCase implements LogPedidoServicePort {
 
@@ -26,5 +27,10 @@ public class LogPedidoUseCase implements LogPedidoServicePort {
         LocalDateTime fechaLogPedidoEntregado = logPedidoPersistencePort.obtenerLogPedidoPorEstado(idPedido,"Entregado").getFecha();
         Duration duration = Duration.between(fechaLogPedidoPendiente,fechaLogPedidoEntregado);
         return duration.toMinutes();
+    }
+
+    @Override
+    public List<LogPedido> obtenerLogsPedido(Long idPedido) {
+        return logPedidoPersistencePort.obtenerLogsPedido(idPedido);
     }
 }

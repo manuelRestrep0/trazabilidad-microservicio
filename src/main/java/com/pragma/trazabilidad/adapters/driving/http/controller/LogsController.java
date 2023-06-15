@@ -1,6 +1,7 @@
 package com.pragma.trazabilidad.adapters.driving.http.controller;
 
 import com.pragma.trazabilidad.adapters.driving.http.dto.LogPedidoDto;
+import com.pragma.trazabilidad.adapters.driving.http.dto.LogPedidoResponseDto;
 import com.pragma.trazabilidad.adapters.driving.http.handler.LogsPedidoHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -31,6 +33,10 @@ public class LogsController {
     @GetMapping("/tiempo-pedido/{idPedido}")
     public Long obtenerTiempoPedido(@PathVariable("idPedido") Long idPedido){
         return pedidoHandler.tiempoPedido(idPedido);
+    }
+    @GetMapping("/obtener-logs/{idPedido}")
+    public List<LogPedidoResponseDto> obtenerLogsPedido(@PathVariable("idPedido") Long idPedido){
+        return pedidoHandler.obtenerLogs(idPedido);
     }
 
 }
